@@ -1,7 +1,10 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
 const port = 3000;
+
+
 
 
 // Aggregation endpoint
@@ -28,7 +31,16 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+// Connect to MongoDB and start the server
+
+mongoose.connect('mongodb+srv://admin:admin4567@dataaggregationapi.c5r4pt5.mongodb.net/DataAggregationSystem?retryWrites=true&w=majority')
+  .then(() =>{
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+    console.log('Connected to MongoDB')
+  }).catch(()=>{
+    console.log('error')
+  })
+
+
