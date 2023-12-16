@@ -61,7 +61,7 @@ models folder contains the folowing files which defines the schema for each mode
 
 ## Conclusion
 
-This project make me understand MongoDB and its newest updates more deeply. 
+This project made me understand MongoDB and its newest updates more deeply. 
 
 ## License
 
