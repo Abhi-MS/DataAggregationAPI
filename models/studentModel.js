@@ -2,22 +2,10 @@ const mongoose = require('mongoose');
 
 const studentSchema = mongoose.Schema(
     {
-        name: {
-            type: String,
-            required: [true, "Please enter student name"]
-        },
-        age: {
-            type: Number,
-            required: [true, "Please enter student age"]
-        },
-        grade: {
-            type: String,
-            required: [true, "Please enter student grade"]
-        },
-        classID: mongoose.Types.ObjectId
-    },
-    {
-        timestamps: true
+        name: String,
+        age: Number,
+        grade: String,
+        classID: Number
     }
 )
 

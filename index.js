@@ -1,23 +1,24 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const Student = require('./models/studentModel');
+const Teacher = require('./models/teacherModel');
+const Class = require('./models/classModel');
 
 const app = express();
 const port = 3000;
 
-
-
-
 // Aggregation endpoint
-app.get('/', async (req, res) => {
+app.get('/summary', async (req, res) => {
   try {
     // Total number of students
-    const totalStudents = 23;
+    const totalStudents = await Student.countDocuments();
 
     // Average age of students
-    const averageAge = 13;
+    const averageAgeResult = await Student.aggregate([{ $group: { _id: null, averageAge: { $avg: '$age' } } }]);
+    const averageAge = averageAgeResult[0].averageAge.toFixed(2);
 
     // Number of classes offered
-    const totalClasses = 12;
+    const totalClasses = await Class.countDocuments();
 
     // Return the aggregated data
     res.json({
