@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const classSchema = mongoose.Schema(
     {
         subject:String,
-        numberOfStudents:Number
+        numberOfStudents:Number,
+        teacherID: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Teacher'
+          }
     }
 )
 

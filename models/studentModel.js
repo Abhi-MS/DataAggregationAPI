@@ -5,7 +5,10 @@ const studentSchema = mongoose.Schema(
         name: String,
         age: Number,
         grade: String,
-        classID: Number
+        classID: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Class'
+          }
     }
 )
 

@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const Student = require('./models/studentModel');
 const Teacher = require('./models/teacherModel');
 const Class = require('./models/classModel');
+require("dotenv").config();
 
 const app = express();
 const port = 3000;
+
+const mongoURL = process.env.MONGODB_URL;
 
 // Aggregation endpoint
 app.get('/summary', async (req, res) => {
@@ -34,7 +37,7 @@ app.get('/summary', async (req, res) => {
 
 // Connect to MongoDB and start the server
 
-mongoose.connect('mongodb+srv://admin:admin4567@dataaggregationapi.c5r4pt5.mongodb.net/DataAggregationSystem?retryWrites=true&w=majority')
+mongoose.connect(mongoURL)
   .then(() =>{
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
